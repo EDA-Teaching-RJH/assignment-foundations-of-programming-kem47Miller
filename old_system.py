@@ -29,7 +29,7 @@ def run_system_monolith():
         if opt == "1": #1change = to ==, not assigning opt to 1 but do an equality check  
             print("Current Crew List:")
             
-            for i in range(10):
+            for i in range(len(n)):#4change range(10) to the number of items in list (only 4 crew memebers not 10)
                 print(n[i] + " - " + r[i]) 
                 
         elif opt == "2":
