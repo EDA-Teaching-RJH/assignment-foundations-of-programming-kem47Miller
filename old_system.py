@@ -39,6 +39,8 @@ def run_system_monolith():
             
            
             n.append(new_name)
+            r.append(new_rank)#added so that new ranks can be added
+            d.append(new_div)#added so that new divisions can be added
             print("Crew member added.")
             
         elif opt == "3":
@@ -89,4 +91,4 @@ def run_system_monolith():
             
         print("End of cycle.")
 
-run_system_monolith()#2added () so function is called and code can run
+run_system_monolith() #2added () so function is called and code can run
