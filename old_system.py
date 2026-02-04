@@ -39,8 +39,8 @@ def run_system_monolith():
             
            
             n.append(new_name)
-            r.append(new_rank)#added so that new ranks can be added
-            d.append(new_div)#added so that new divisions can be added
+            r.append(new_rank)#added so that new ranks can be added because in sync/added append so parallel lists are nsync /have same length/have same number of members and have them in correct order
+            d.append(new_div)#added so that new divisions can be added 'cause in sync
             print("Crew member added.")
             
         elif opt == "3":
