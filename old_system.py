@@ -39,13 +39,13 @@ def run_system_monolith():
             
            
             n.append(new_name)
-            r.append(new_rank)#added so that new ranks can be added because in sync/added append so parallel lists are nsync /have same length/have same number of members and have them in correct order
-            d.append(new_div)#added so that new divisions can be added 'cause in sync
+            r.append(new_rank)#5added so that new ranks can be added because in sync/added append so parallel lists are nsync /have same length/have same number of members and have them in correct order
+            d.append(new_div)#5added so that new divisions can be added 'cause in sync
             print("Crew member added.")
             
         elif opt == "3":
             rem = input("Name to remove: ")
-            if rem in n:#5thchange- 'if rem in n:' addedd so code can first check to see if name given is on the list and if so remove name.before, code would break if name giben not on list, now it dont.
+            if rem in n:#6thchange- 'if rem in n:' addedd so code can first check to see if name given is on the list and if so remove name.before, code would break if name giben not on list, now it dont.
                 idx = n.index(rem)
                 n.pop(idx)
                 r.pop(idx)
@@ -60,9 +60,9 @@ def run_system_monolith():
             count = 0
             
             for rank in r:
-                if rank == "Captain" or rank== "Commander": #6th added 'rank==' to Commander to make comparison true for not just the captain but for the commander too.
+                if rank == "Captain" or rank== "Commander": #7th added 'rank==' to Commander to make comparison true for not just the captain but for the commander too.
                     count = count + 1
-            print("High ranking officers: " + str(count))#7tth added str().python cant add string to integer so crash happen. i need to make integer string to prevent this.
+            print("High ranking officers: " + str(count))#8th added str().python cant add string to integer so crash happen. i need to make integer string to prevent this.
             
         elif opt == "5":
             print("Shutting down.")
@@ -86,11 +86,11 @@ def run_system_monolith():
 
         
         fuel = 100
-        consumption = 0
+        consumption = -100#9replace 0 with -100
         while fuel > 0:
             
             print("Idling...")
-            break 
+            fuel=consumption #9replace break with fuel so in code the fuel decreases.orginally it didnt and the break prevent the the loop from running continuously but by making this addition the orginal intent can be carried out and code is not broken.
             
         print("End of cycle.")
 
