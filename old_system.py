@@ -45,12 +45,15 @@ def run_system_monolith():
             
         elif opt == "3":
             rem = input("Name to remove: ")
+            if rem in n:#5thchange- 'if rem in n:' added so code can first check to see if name given is on the list and if so remove name.before, code would break if name giben not on list, now it dont.
+                idx = n.index(rem)
+                n.pop(idx)
+                r.pop(idx)
+                d.pop(idx)
+                print("Removed.")
+            else:
+                print("No such member is present")    
            
-            idx = n.index(rem)
-            n.pop(idx)
-            r.pop(idx)
-            d.pop(idx)
-            print("Removed.")
             
         elif opt == "4":
             print("Analyzing...")
