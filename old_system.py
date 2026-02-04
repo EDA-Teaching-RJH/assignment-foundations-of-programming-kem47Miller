@@ -62,7 +62,7 @@ def run_system_monolith():
             for rank in r:
                 if rank == "Captain" or rank== "Commander": #6th added 'rank==' to Commander to make comparison true for not just the captain but for the commander too.
                     count = count + 1
-            print("High ranking officers: " + count) 
+            print("High ranking officers: " + str(count))#7th added str().python cant add string to integer so crash happen. i need to make integer string to prevent this.
             
         elif opt == "5":
             print("Shutting down.")
