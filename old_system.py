@@ -81,7 +81,7 @@ def run_system_monolith():
        
         if len(n) > 0:
             print("Database has entries.")
-        if len(n) == 0:
+        elif len(n) == 0:#elif replace the if that was here.before the 2 if statement were about the same thing/checking same condition- len(n). elif is used here instead to remain precise and prevent error.
             print("Database empty.")
 
         
