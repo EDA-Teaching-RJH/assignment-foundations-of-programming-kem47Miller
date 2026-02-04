@@ -81,16 +81,16 @@ def run_system_monolith():
        
         if len(n) > 0:
             print("Database has entries.")
-        elif len(n) == 0:#elif replace the if that was here.before the 2 if statement were about the same thing/checking same condition- len(n). elif is used here instead to remain precise and prevent error.
+        elif len(n) == 0:#9elif replace the if that was here.before the 2 if statement were about the same thing/checking same condition- len(n). elif is used here instead to remain precise and prevent error.
             print("Database empty.")
 
         
         fuel = 100
-        consumption = -100#9replace 0 with -100
+        consumption = -100#10replace 0 with -100
         while fuel > 0:
             
             print("Idling...")
-            fuel=consumption #9replace break with fuel so in code the fuel decreases.orginally it didnt and the break prevent the the loop from running continuously but by making this addition the orginal intent can be carried out and code is not broken.
+            fuel=consumption #10replace break with fuel so in code the fuel decreases.orginally it didnt and the break prevent the the loop from running continuously but by making this addition the orginal intent can be carried out and code is not broken.
             
         print("End of cycle.")
 
