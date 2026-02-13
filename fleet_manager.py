@@ -181,3 +181,31 @@ def search_crew(names, ranks, divisions, ids):
     
     if not found:
         print("Member not found.")
+
+
+def filter_by_division(names, divisions):
+   
+    print("\n--- Filter by Division ---")
+    
+    if len(names) == 0:
+        print("No memebers in the fleet.")
+        return
+    
+    print("Divisions: Command, Operations, Sciences, Security")
+    choice = input("Enter division: ")
+    choice = choice.title()
+    
+    if choice != "Command" and choice != "Operations" and choice != "Sciences" and choice != "Security":
+        print("Invalid division.")
+        return
+    
+    print(f"\n{choice} Division:")
+    found = False
+    
+    for i in range(len(names)):
+        if divisions[i] == choice:
+            print(f"  {names[i]}")
+            found = True
+    
+    if not found:
+        print("Not found.")
