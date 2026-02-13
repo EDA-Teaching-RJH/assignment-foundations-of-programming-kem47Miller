@@ -109,15 +109,12 @@ def remove_member(names, ranks, divisions, ids):
 
 
 def update_rank(names, ranks, ids):
-    """
-    Finds a member by ID.
-    Updates their rank string.
-    """
+    
     print("\n--- Update Crew Member Rank ---")
     
-    # Check if fleet is empty
+    
     if not names:
-        print(" No members to update.")
+        print("No members to update.")
         return
     
     
@@ -145,10 +142,22 @@ def update_rank(names, ranks, ids):
         if new_rank in valid_ranks:
             
             ranks[index] = new_rank
-            print(f"{names[index]} Rank has been updated!")
+            print(f"{names[index]} rank has been updated!")
             print(f"New rank: {new_rank}")
         else:
-            print("Error: Invalid rank.Update unable to be continued")
+            print("Error: Invalid rank.Update unable to continue")
             
     else:
-        print(f"ID: {crew_id}, is invalid") 
+        print(f"ID: {crew_id}, is invalid")
+
+def display_roster(names, ranks, divisions, ids):
+    
+    print("\n--- CREW ROSTER ---")
+    
+    if len(names) == 0:
+        print("Zero members.")
+        return
+    
+    for i in range(len(names)):
+        print(names[i], ranks[i], divisions[i], ids[i]) 
+    print(f"Number of crew members: {len(names)}") 
