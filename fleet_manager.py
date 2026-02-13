@@ -209,3 +209,33 @@ def filter_by_division(names, divisions):
     
     if not found:
         print("Not found.")
+
+
+def calculate_payroll(ranks):
+   
+    print("\n--- Calculate Payroll ---")
+    
+    if len(ranks) == 0:
+        print("The fleet is empty.")
+        return 0
+    
+    total = 0
+    
+    for i in range(len(ranks)):
+        if ranks[i] == "Ensign":
+            total = total + 200
+        elif ranks[i] == "Lieutenant Junior Grade":
+            total = total + 300
+        elif ranks[i] == "Lieutenant":
+            total = total + 400
+        elif ranks[i] == "Lieutenant Commander":
+            total = total + 550
+        elif ranks[i] == "Commander":
+            total = total + 750
+        elif ranks[i] == "Captain":
+            total = total + 1000
+        elif ranks[i] == "Admiral":
+            total = total + 1500
+    
+    print(f"Total payroll: {total} credits")
+    return total
