@@ -77,3 +77,31 @@ def add_member(names, ranks, divisions, ids):
     ids.append(new_id)
     
     print(f"{new_name} has been added to fleet records")
+
+def remove_member(names, ranks, divisions, ids):
+    
+    print("\n--- Remove Crew Member ---")
+    
+    # Check if fleet is empty
+    if not names:
+        print("The fleet is empty. No members to remove.")
+        return
+    
+    # Ask for ID
+    member_id = input("Enter the ID of the crew member to remove: ")
+    
+    # Check if ID exists
+    if member_id in ids:
+        # Find the index position
+        index = ids.index(member_id)
+        removed_name = names[index]
+        
+        # Remove from ALL 4 lists at the SAME index
+        names.pop(index)
+        ranks.pop(index)
+        divisions.pop(index)
+        ids.pop(index)
+        
+        print(f"{removed_name} (ID: {member_id}) has been removed from the fleet.")
+    else:
+        print(f"No crew member found with ID: {member_id}")
