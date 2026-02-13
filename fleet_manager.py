@@ -261,3 +261,38 @@ def count_officers(ranks):
     
     print(f"Senior officers: {count}")
     return count
+def main():
+    
+    print("\nFleet Manage Interface")
+    
+
+    names, ranks, divisions, ids = init_database()
+    print("Booting up system")
+    
+    while True:
+        choice = display_menu()
+        
+        if choice == 1:
+            add_member(names, ranks, divisions, ids)
+        elif choice == 2:
+            remove_member(names, ranks, divisions, ids)
+        elif choice == 3:
+            update_rank(names, ranks, ids)
+        elif choice == 4:
+            display_roster(names, ranks, divisions, ids)
+        elif choice == 5:
+            search_crew(names, ranks, divisions, ids)
+        elif choice == 6:
+            filter_by_division(names, divisions)
+        elif choice == 7:
+            calculate_payroll(ranks)
+        elif choice == 8:
+            count_officers(ranks)
+        elif choice == 9:
+            break
+        
+        input("\nPress Enter to continue...")
+
+
+
+main()
