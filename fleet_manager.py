@@ -39,7 +39,7 @@ def add_member(names, ranks, divisions, ids):
     
     print("\n--- Add New Crew Member ---")
     
-    # STEP 1: checking if id is UNIQUE
+    
     while True:
         new_id = input("Enter ID: ")
         if new_id in ids:
@@ -50,7 +50,7 @@ def add_member(names, ranks, divisions, ids):
 
     new_name = input("State name: ")
     
-    # STEP 3: Validate RANK is valid TNG rank
+    
     while True:
         
         print("\nValid ranks: Ensign, Lieutenant Junior Grade, Lieutenant, Lieutenant Commander, Commander, Captain,  Admiral")      
@@ -82,26 +82,73 @@ def remove_member(names, ranks, divisions, ids):
     
     print("\n--- Remove Crew Member ---")
     
-    # Check if fleet is empty
+    
     if not names:
-        print("The fleet is empty. No members to remove.")
+        print("No members found for removal.")
         return
     
-    # Ask for ID
-    member_id = input("Enter the ID of the crew member to remove: ")
     
-    # Check if ID exists
+    member_id = input("Enter ID you want removed: ")
+    
+    
     if member_id in ids:
-        # Find the index position
+        
         index = ids.index(member_id)
         removed_name = names[index]
         
-        # Remove from ALL 4 lists at the SAME index
+    
         names.pop(index)
         ranks.pop(index)
         divisions.pop(index)
         ids.pop(index)
         
-        print(f"{removed_name} (ID: {member_id}) has been removed from the fleet.")
+        print(f"{removed_name} (ID: {member_id}) has been removed from fleet records.")
     else:
-        print(f"No crew member found with ID: {member_id}")
+        print(f"No member with this ID found: {member_id}")
+
+
+
+def update_rank(names, ranks, ids):
+    """
+    Finds a member by ID.
+    Updates their rank string.
+    """
+    print("\n--- Update Crew Member Rank ---")
+    
+    # Check if fleet is empty
+    if not names:
+        print(" No members to update.")
+        return
+    
+    
+    valid_ranks = ["Ensign", "Lieutenant Junior Grade", "Lieutenant", 
+                   "Lieutenant Commander", "Commander", "Captain", "Admiral"]
+    
+    
+    crew_id = input("Give ID details for update: ")
+    
+    
+    if crew_id in ids:
+    
+        index = ids.index(crew_id)
+        
+    
+        print(f"\nCurrent details:")
+        print(f"Name: {names[index]}")
+        print(f"Current Rank: {ranks[index]}")
+        
+        
+        print("\nValid ranks: Ensign, Lieutenant Junior Grade, Lieutenant, Lieutenant Commander, Commander, Captain, Admiral")
+        new_rank = input("Enter new rank: ").title()
+        
+        
+        if new_rank in valid_ranks:
+            
+            ranks[index] = new_rank
+            print(f"{names[index]} Rank has been updated!")
+            print(f"New rank: {new_rank}")
+        else:
+            print("Error: Invalid rank.Update unable to be continued")
+            
+    else:
+        print(f"ID: {crew_id}, is invalid") 
