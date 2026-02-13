@@ -28,3 +28,52 @@ def display_menu():
                 print("Enter a number 1 to  9.")#print this
         except ValueError:#if input not a number
             print("Enter a number 1 to 9.")#print this
+
+
+
+def add_member(names, ranks, divisions, ids):
+   
+    # valid TNG ranks
+    valid_ranks = ["Ensign", "Lieutenant Junior Grade", "Lieutenant", 
+                   "Lieutenant Commander", "Commander", "Captain", "Admiral"]
+    
+    print("\n--- Add New Crew Member ---")
+    
+    # STEP 1: checking if id is UNIQUE
+    while True:
+        new_id = input("Enter ID: ")
+        if new_id in ids:
+            print("This ID already exists.")
+        else:
+            break  #id is valid so break loop
+    
+
+    new_name = input("State name: ")
+    
+    # STEP 3: Validate RANK is valid TNG rank
+    while True:
+        
+        print("\nValid ranks: Ensign, Lieutenant Junior Grade, Lieutenant, Lieutenant Commander, Commander, Captain,  Admiral")      
+        new_rank = input("State rank: ").title()
+        if new_rank in valid_ranks:
+            break  # Rank is valid, exit loop
+        else:
+            print("Please try again.")
+    
+
+    valid_divisions = ["Command", "Operations", "Sciences", "Security"]
+    while True:
+        print("\nValid divisions: Command, Operations, Sciences, Security")
+        new_division = input("Enter division: ").title()
+        if new_division in valid_divisions:
+            break
+        else:
+            print("Invalid Division.")
+    
+
+    names.append(new_name)
+    ranks.append(new_rank)
+    divisions.append(new_division)
+    ids.append(new_id)
+    
+    print(f"{new_name} has been added to fleet records")
