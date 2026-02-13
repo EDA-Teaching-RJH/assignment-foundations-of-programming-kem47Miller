@@ -239,3 +239,25 @@ def calculate_payroll(ranks):
     
     print(f"Total payroll: {total} credits")
     return total
+
+
+
+
+def count_officers(ranks):
+    
+    print("\n--- Count Senior Officers ---")
+    
+    if len(ranks) == 0:
+        print("The fleet is empty.")
+        return 0
+    
+    count = 0
+    
+    for i in range(len(ranks)):
+        if ranks[i] == "Captain":
+            count = count + 1
+        if ranks[i] == "Commander":
+            count = count + 1
+    
+    print(f"Senior officers: {count}")
+    return count
