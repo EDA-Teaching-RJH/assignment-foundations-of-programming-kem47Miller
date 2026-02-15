@@ -27,7 +27,7 @@ def display_menu():
         print("5. Search crew by name")
         print("6. Filter by division")
         print("7. Calculate payroll")
-        print("8. Count senior officers")
+        print("8. Number of Leadership officers aboard")
         print("9. Exit")
         
         try:
@@ -45,15 +45,16 @@ def add_member(names, ranks, divisions, ids):
    
     # valid TNG ranks
     valid_ranks = ["Ensign", "Lieutenant Junior Grade", "Lieutenant", 
-                   "Lieutenant Commander", "Commander", "Captain", "Admiral"]
+                   "Lieutenant Commander", "Commander", "Captain", 
+                   "Admiral"]#looks better this way
     
     print("\n--- Add New Crew Member ---")
     
     
     while True:
-        new_id = input("Enter ID: ")
+        new_id = input("Enter ID: ").strip()
         if new_id in ids:
-            print("This ID already exists.")
+            print("Id entered MUST NOT already exist.")
         else:
             break  #id is valid so break loop
     
@@ -68,13 +69,15 @@ def add_member(names, ranks, divisions, ids):
         if new_rank in valid_ranks:
             break  # Rank is valid, exit loop
         else:
-            print("Please try again.")
+            print("Please enter one of the RANKS given ABOVE.")
     
 
-    valid_divisions = ["Command", "Operations", "Sciences", "Security"]
+    valid_divisions = ["Command", "Operations", "Sciences", "Security"
+                       ]
     while True:
-        print("\nValid divisions: Command, Operations, Sciences, Security")
-        new_division = input("Enter division: ").title()
+        print("\nValid divisions: Command, Operations, Sciences, " 
+        "Security")
+        new_division = input("State division: ").title()
         if new_division in valid_divisions:
             break
         else:
@@ -128,8 +131,11 @@ def update_rank(names, ranks, ids):
         return
     
     
-    valid_ranks = ["Ensign", "Lieutenant Junior Grade", "Lieutenant", 
-                   "Lieutenant Commander", "Commander", "Captain", "Admiral"]
+    valid_ranks = [
+        "Ensign", "Lieutenant Junior Grade",
+       "Lieutenant", "Lieutenant Commander",
+        "Commander", "Captain", "Admiral"
+        ]
     
     
     crew_id = input("Give ID details for update: ")
@@ -145,7 +151,7 @@ def update_rank(names, ranks, ids):
         print(f"Current Rank: {ranks[index]}")
         
         
-        print("\nValid ranks: Ensign, Lieutenant Junior Grade, Lieutenant, Lieutenant Commander, Commander, Captain, Admiral")
+        print("\nValid ranks: Ensign, Lieutenant Junior Grade," " Lieutenant, Lieutenant Commander, Commander, Captain, Admiral")
         new_rank = input("Enter new rank: ").title()
         
         
