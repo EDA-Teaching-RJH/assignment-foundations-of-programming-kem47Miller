@@ -12,7 +12,7 @@ def init_database():
     divisions=[
         "Command", "Command", "Operations", "Security",
                "Operations"]
-    ids=["00","01","02","03","04"]
+    ids=[1100,1101,1102,1103,1104]
     return names, ranks,divisions, ids
 
 def display_menu():
@@ -37,29 +37,30 @@ def display_menu():
             else:# if input not 1 to 9
                 print("Mhmm...that's not right. Try picking a number 1 to  9.")#print this
         except ValueError:#if input not a number
-            print("No. Pick a NUMBER from ONE to TEN.")#print this
+            print("No. Pick a NUMBER from ONE to NINE.")#print this
 
 
 
 def add_member(names, ranks, divisions, ids):
-   
-    # valid TNG ranks
     valid_ranks = ["Ensign", "Lieutenant Junior Grade", "Lieutenant", 
-                   "Lieutenant Commander", "Commander", "Captain", 
-                   "Admiral"]#looks better this way
+                   "Lieutenant Commander", "Commander", "Captain", "Admiral"]
     
     print("\n--- Add New Crew Member ---")
     
-    
     while True:
-        new_id = input("Enter ID: ").strip()
-        if new_id in ids:
-            print("Id entered MUST NOT already exist.")
-        else:
-            break  #id is valid so break loop
+        try:
+            new_id = int(input("Enter ID (integer only): ")) 
+            if new_id in ids:
+                print("ID entered MUST NOT already exist.")
+            else:
+                break
+        except ValueError:
+            print("Please enter a NUMBER for ID.")
     
+    
+   
 
-    new_name = input("State name: ")
+    new_name = input("State name: ").title()
     
     
     while True:
@@ -95,6 +96,32 @@ def remove_member(names, ranks, divisions, ids):
     
     print("\n--- Remove Crew Member ---")
     
+    if not names:
+        print("No members found for removal.")
+        return
+    
+    try:
+        member_id = int(input("What is the id you want removed? "))
+    except ValueError:
+        print("ID must be a number.")
+        return
+    
+    if member_id in ids:
+        index = ids.index(member_id)
+        removed_name = names[index]
+        
+        names.pop(index)
+        ranks.pop(index)
+        divisions.pop(index)
+        ids.pop(index)
+        
+        print(f"{removed_name} (ID: {member_id}) has been removed from fleet records.")
+    else:
+        print(f"oops:(----No member with this ID found: {member_id}")
+        '''def remove_member(names, ranks, divisions, ids):
+    
+    print("\n--- Remove Crew Member ---")
+    
     
     if not names:
         print("No members found for removal.")
@@ -117,7 +144,7 @@ def remove_member(names, ranks, divisions, ids):
         
         print(f"{removed_name} (ID: {member_id}) has been removed from fleet records.")
     else:
-        print(f"oops:(----No member with this ID found: {member_id}")
+        print(f"oops:(----No member with this ID found: {member_id}")'''
 
     
 
@@ -143,7 +170,8 @@ def update_rank(names, ranks, ids):
         print(f"Current Rank: {ranks[index]}")
         
         
-        print("\nValid ranks: Ensign, Lieutenant Junior Grade," " Lieutenant, Lieutenant Commander, Commander, Captain, Admiral")
+        print("\nValid ranks: Ensign, Lieutenant Junior Grade,"
+               " Lieutenant, Lieutenant Commander, Commander, Captain, Admiral")
         new_rank = input("State the rank: ").title()
         
         
