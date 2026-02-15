@@ -81,7 +81,7 @@ def add_member(names, ranks, divisions, ids):
         if new_division in valid_divisions:
             break
         else:
-            print("Invalid Division.")
+            print("Division entered DOES NOT EXIST.Choose a divisin from one given ABOVE!!")
     
 
     names.append(new_name)
@@ -101,7 +101,7 @@ def remove_member(names, ranks, divisions, ids):
         return
     
     
-    member_id = input("Enter ID you want removed: ")
+    member_id = input("What is the id you want removed? ")
     
     
     if member_id in ids:
@@ -117,7 +117,7 @@ def remove_member(names, ranks, divisions, ids):
         
         print(f"{removed_name} (ID: {member_id}) has been removed from fleet records.")
     else:
-        print(f"No member with this ID found: {member_id}")
+        print(f"oops:(----No member with this ID found: {member_id}")
 
 
 
@@ -127,7 +127,7 @@ def update_rank(names, ranks, ids):
     
     
     if not names:
-        print("No members to update.")
+        print("Sooo... no members for update.")
         return
     
     
@@ -138,12 +138,12 @@ def update_rank(names, ranks, ids):
         ]
     
     
-    crew_id = input("Give ID details for update: ")
+    staff_id = input("What information do you want revised? ")
     
     
-    if crew_id in ids:
+    if staff_id in ids:
     
-        index = ids.index(crew_id)
+        index = ids.index(staff_id)
         
     
         print(f"\nCurrent details:")
@@ -152,7 +152,7 @@ def update_rank(names, ranks, ids):
         
         
         print("\nValid ranks: Ensign, Lieutenant Junior Grade," " Lieutenant, Lieutenant Commander, Commander, Captain, Admiral")
-        new_rank = input("Enter new rank: ").title()
+        new_rank = input("State the rank: ").title()
         
         
         if new_rank in valid_ranks:
@@ -164,11 +164,11 @@ def update_rank(names, ranks, ids):
             print("Error: Invalid rank.Update unable to continue")
             
     else:
-        print(f"ID: {crew_id}, is invalid")
+        print(f"ID: {staff_id}, is invalid")
 
 def display_roster(names, ranks, divisions, ids):
     
-    print("\n--- CREW ROSTER ---")
+    print("\n--- STAFF ROSTER ---")
     
     if len(names) == 0:
         print("Zero members.")
@@ -180,40 +180,96 @@ def display_roster(names, ranks, divisions, ids):
 
 
 def search_crew(names, ranks, divisions, ids):
+    print("\n--- Search Crew by Name ---")
+    
+    if len(names) == 0:
+        print("Yike, no one is currently in the fleet database.")
+        return
+    
+    word = input("What name are you look for? ")
+    count = 0  
+    
+    for i in range(len(names)):
+        if word.lower() in names[i].lower():
+            print(f"{names[i]} - {ranks[i]} - {divisions[i]} - ID: {ids[i]}")
+            count += 1  
+    
+    if count == 0: 
+        print("No such persons found.")
+    else:
+        print(f"Good news! There are {count} present.")
+'''def search_crew(names, ranks, divisions, ids):
    
     print("\n--- Search Crew by Name ---")
     
     if len(names) == 0:
-        print("No memebers in the fleet.")
+        print("Yikes, no one is currently in the fleet.")
         return
     
-    search_term = input("Enter name you are searching for: ")
+    word = input("What name are you looking for? ")
     found = False
     
     for i in range(len(names)):
-        if search_term.lower() in names[i].lower():
+        if word.lower() in names[i].lower():
             print(f"{names[i]} - {ranks[i]} - {divisions[i]} - ID: {ids[i]}")
             found = True
     
     if not found:
-        print("Member not found.")
+        print("No such person found.")'''
 
 
 def filter_by_division(names, divisions):
+    print("\n--- Filter by Division ---")
+    
+    if len(names) == 0:
+        print("Full Absence.")
+        return
+    
+    print("Divisions: Command, Operations, Sciences, Security")
+    pick = input("Enter division: ")
+    pick = pick.title()
+    
+    match pick:
+        case "Command" | "Operations" | "Sciences" | "Security":
+            print(f"\n{pick} Division:")# i feel match case works better here
+            
+            count = 0 
+            for i in range(len(names)):
+                if divisions[i] == pick:
+                    print(f"  {names[i]}")
+                    count += 1  
+            
+            if count == 0: 
+                print("Not found.")
+            else:
+                print(f"Found {count} member(s)")
+                
+        case _:
+            print("Try a division from the given.")
+            return
+'''def filter_by_division(names, divisions):
    
     print("\n--- Filter by Division ---")
     
     if len(names) == 0:
-        print("No memebers in the fleet.")
+        print("Full Absence.")
         return
     
     print("Divisions: Command, Operations, Sciences, Security")
-    choice = input("Enter division: ")
-    choice = choice.title()
+    div = input("Enter division: ")
+    div = choice.title()
     
-    if choice != "Command" and choice != "Operations" and choice != "Sciences" and choice != "Security":
+    match choice:
+    case "Command" | "Operations" | "Sciences" | "Security":
+        
+        print(f"\n{choice} Division:")
+        
+    case _:
         print("Invalid division.")
         return
+    #if choice != "Command" and choice != "Operations" and choice != "Sciences" and choice != "Security":
+       # print("Invalid division.")
+        #return
     
     print(f"\n{choice} Division:")
     found = False
@@ -224,7 +280,7 @@ def filter_by_division(names, divisions):
             found = True
     
     if not found:
-        print("Not found.")
+        print("Not found.")'''
 
 
 def calculate_payroll(ranks):
@@ -261,7 +317,7 @@ def calculate_payroll(ranks):
 
 def count_officers(ranks):
     
-    print("\n--- Count Senior Officers ---")
+    print("\n***** Number of Head Officers**")
     
     if len(ranks) == 0:
         print("The fleet is empty.")
@@ -275,7 +331,7 @@ def count_officers(ranks):
         if ranks[i] == "Commander":
             count = count + 1
     
-    print(f"Senior officers: {count}")
+    print(f"Leading officers: {count}")
     return count
 def main():
     
