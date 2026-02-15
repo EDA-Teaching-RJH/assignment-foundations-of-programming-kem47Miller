@@ -27,7 +27,7 @@ def display_menu():
         print("5. Search crew by name")
         print("6. Filter by division")
         print("7. Calculate payroll")
-        print("8. Number of Leadership officers aboard")
+        print("8. Number of Leadering officers aboard")
         print("9. Exit")
         
         try:
@@ -35,7 +35,7 @@ def display_menu():
             if 1 <= opt_picked <= 9:# if the input is 1 to 9
                 return opt_picked#exit loop
             else:# if input not 1 to 9
-                print("Mhmm...that's not right. Try picking a # 1 to  9.")#print this
+                print("Mhmm...that's not right. Try picking a number 1 to  9.")#print this
         except ValueError:#if input not a number
             print("No. Pick a NUMBER from ONE to TEN.")#print this
 
@@ -69,7 +69,7 @@ def add_member(names, ranks, divisions, ids):
         if new_rank in valid_ranks:
             break  # Rank is valid, exit loop
         else:
-            print("Please enter one of the RANKS given ABOVE.")
+            print("Please enter one of the RANKS GIVEN ABOVE.")
     
 
     valid_divisions = ["Command", "Operations", "Sciences", "Security"
@@ -123,12 +123,13 @@ def remove_member(names, ranks, divisions, ids):
 
 def update_rank(names, ranks, ids):
     
-    print("\n--- Update Crew Member Rank ---")
+    print("\n*** Update Crew Member Rank**")
     
     
-    if not names:
+    
+    '''if not names:
         print("Sooo... no members for update.")
-        return
+        return'''
     
     
     valid_ranks = [
@@ -247,40 +248,7 @@ def filter_by_division(names, divisions):
         case _:
             print("Try a division from the given.")
             return
-'''def filter_by_division(names, divisions):
-   
-    print("\n--- Filter by Division ---")
-    
-    if len(names) == 0:
-        print("Full Absence.")
-        return
-    
-    print("Divisions: Command, Operations, Sciences, Security")
-    div = input("Enter division: ")
-    div = choice.title()
-    
-    match choice:
-    case "Command" | "Operations" | "Sciences" | "Security":
-        
-        print(f"\n{choice} Division:")
-        
-    case _:
-        print("Invalid division.")
-        return
-    #if choice != "Command" and choice != "Operations" and choice != "Sciences" and choice != "Security":
-       # print("Invalid division.")
-        #return
-    
-    print(f"\n{choice} Division:")
-    found = False
-    
-    for i in range(len(names)):
-        if divisions[i] == choice:
-            print(f"  {names[i]}")
-            found = True
-    
-    if not found:
-        print("Not found.")'''
+
 
 
 def calculate_payroll(ranks):
@@ -317,7 +285,7 @@ def calculate_payroll(ranks):
 
 def count_officers(ranks):
     
-    print("\n***** Number of Head Officers**")
+    print("\n***** Number of Leading Officers**")
     
     if len(ranks) == 0:
         print("The fleet is empty.")
@@ -328,13 +296,9 @@ def count_officers(ranks):
     for i in range(len(ranks)):
         if ranks[i]=="Captain" or ranks[i]== "Commander":
             count += 1
-    '''for i in range(len(ranks)):
-        if ranks[i] == "Captain":
-            count = count + 1
-        if ranks[i] == "Commander":
-            count =count+ 1'''
     
-    print(f"Leading officers: {count}")
+    
+    print(f"Number of Leading officers present: {count}")
     return count
 def main():
     
