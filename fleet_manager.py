@@ -12,7 +12,7 @@ def init_database():
     divisions=[
         "Command", "Command", "Operations", "Security",
                "Operations"]
-    ids=[1100,1101,1102,1103,1104]
+    ids=[11,10,9,8,7]
     return names, ranks,divisions, ids
 
 def display_menu():
@@ -118,73 +118,42 @@ def remove_member(names, ranks, divisions, ids):
         print(f"{removed_name} (ID: {member_id}) has been removed from fleet records.")
     else:
         print(f"oops:(----No member with this ID found: {member_id}")
-        '''def remove_member(names, ranks, divisions, ids):
-    
-    print("\n--- Remove Crew Member ---")
-    
-    
-    if not names:
-        print("No members found for removal.")
-        return
-    
-    
-    member_id = input("What is the id you want removed? ")
-    
-    
-    if member_id in ids:
-        
-        index = ids.index(member_id)
-        removed_name = names[index]
-        
-    
-        names.pop(index)
-        ranks.pop(index)
-        divisions.pop(index)
-        ids.pop(index)
-        
-        print(f"{removed_name} (ID: {member_id}) has been removed from fleet records.")
-    else:
-        print(f"oops:(----No member with this ID found: {member_id}")'''
-
-    
+       
 
 def update_rank(names, ranks, ids):
     print("\n*** Update Crew Member Rank**")
-    if len(names) == 0:  #if when you count the # of name, it is zero
+    if len(names) == 0:
         print("No members")
         return
     
-    
     valid_ranks = ["Ensign", "Lieutenant Junior Grade","Lieutenant", "Lieutenant Commander","Commander", "Captain", "Admiral"]
     
-    staff_id = input("What information do you want revised? ")
-    
+    try:
+        staff_id = int(input("Please give staff id number? ")) 
+    except ValueError:
+        print("ID must be a number.")
+        return
     
     if staff_id in ids:
-    
         index = ids.index(staff_id)
         
-    
         print(f"\nCurrent details:")
         print(f"Name: {names[index]}")
         print(f"Current Rank: {ranks[index]}")
         
-        
-        print("\nValid ranks: Ensign, Lieutenant Junior Grade,"
-               " Lieutenant, Lieutenant Commander, Commander, Captain, Admiral")
+        print("\nValid ranks: Ensign, Lieutenant Junior Grade, Lieutenant, Lieutenant Commander, Commander, Captain, Admiral")
         new_rank = input("State the rank: ").title()
         
-        
         if new_rank in valid_ranks:
-            
             ranks[index] = new_rank
             print(f"{names[index]} rank has been updated!")
             print(f"New rank: {new_rank}")
         else:
-            print("Error: Invalid rank.Update unable to continue")
-            
+            print("Error: Invalid rank. Update unable to continue")
     else:
-        print(f"ID: {staff_id}, is invalid")
+        print(f"ID: {staff_id} is invalid")    
+
+
 
 def display_roster(names, ranks, divisions, ids):
     
