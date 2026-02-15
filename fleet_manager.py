@@ -84,7 +84,7 @@ def add_member(names, ranks, divisions, ids):
         if new_division in valid_divisions:
             break
         else:
-            print("Division entered DOES NOT EXIST.Choose a divisin from one given ABOVE!!")
+            print("Division entered DOES NOT EXIST.Choose a divs from one given ABOVE!!")
     
 
     names.append(new_name)
@@ -151,9 +151,9 @@ def update_rank(names, ranks, ids):
             print(f"{names[index]} rank has been updated!")
             print(f"New rank: {new_rank}")
         else:
-            print("Error: Invalid rank. Update unable to continue")
+            print("An error has occured check information give is correct")
     else:
-        print(f"ID: {staff_id} is invalid")    
+        print(f"{staff_id} does not work")    
 
 
 
@@ -250,7 +250,7 @@ def calculate_payroll(ranks):
         elif ranks[i] == "Admiral":
             total = total + 1500
     
-    print(f"Total payroll: {total} credits")
+    print(f"Payment will be: {total} credits")
     return total
 
 
@@ -303,7 +303,7 @@ def main():
         elif opt_picked == 9:
             break
         
-        input("\nPress Enter to continue...")
+        input("\nTo continue press the enter key...")
 
 
 
