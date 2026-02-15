@@ -326,10 +326,13 @@ def count_officers(ranks):
     count = 0
     
     for i in range(len(ranks)):
+        if ranks[i]=="Captain" or ranks[i]== "Commander":
+            count += 1
+    '''for i in range(len(ranks)):
         if ranks[i] == "Captain":
             count = count + 1
         if ranks[i] == "Commander":
-            count = count + 1
+            count =count+ 1'''
     
     print(f"Leading officers: {count}")
     return count
