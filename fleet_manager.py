@@ -49,8 +49,10 @@ def add_member(names, ranks, divisions, ids):
     
     while True:
         try:
-            new_id = int(input("Enter ID (integer only): ")) 
-            if new_id in ids:
+            new_id = int(input("Enter ID (integers only): ")) 
+            if new_id <0:
+                print("ID can't be a neagtive integer")
+            elif new_id in ids:
                 print("ID entered MUST NOT already exist.")
             else:
                 break
